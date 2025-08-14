@@ -817,3 +817,21 @@ p {
     aspect-ratio: 16/10;
   }
 }
+
+/* AI Ops Content Wrapper - Fix card overflow */
+.ai-ops-content-wrapper > div[style*="max-width: 1000px"] {
+  max-width: 100% !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+  padding: 0 !important;
+}
+
+.ai-ops-content-wrapper > div[style*="max-width: 1000px"] > div {
+  padding: 1.5rem !important;
+}
+
+@media (max-width: 768px) {
+  .ai-ops-content-wrapper > div[style*="max-width: 1000px"] > div {
+    padding: 1rem !important;
+  }
+}
