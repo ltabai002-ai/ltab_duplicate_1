@@ -329,7 +329,6 @@ p {
   grid-template-rows: 1fr 1fr;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 var(--container-padding);
   box-sizing: border-box;
 }
 
