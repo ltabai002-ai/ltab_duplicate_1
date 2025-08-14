@@ -482,7 +482,7 @@ p {
 .social-proof-logo {
   width: 120px;
   height: 60px;
-  background: var(--muted);
+  background: transparent;
   border-radius: var(--radius);
   display: flex;
   align-items: center;
