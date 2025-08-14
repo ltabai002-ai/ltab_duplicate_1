@@ -298,7 +298,7 @@ p {
 }
 
 /* Make descriptive paragraphs grow to fill available space */
-.card > p:last-of-type {
+.card > p {
   flex-grow: 1;
   margin-bottom: 0;
 }
