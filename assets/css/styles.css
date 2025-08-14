@@ -297,14 +297,12 @@ p {
   margin-top: auto;
 }
 
-/* Ensure content grows to fill available space */
-.card > *:not(.btn) {
-  flex-grow: 0;
+/* Make descriptive paragraphs grow to fill available space */
+.card > p:last-of-type {
+  flex-grow: 1;
+  margin-bottom: 0;
 }
 
-.card > p:last-of-type:not(.btn) {
-  margin-bottom: auto;
-}
 /* Grid */
 .grid {
   display: grid;
