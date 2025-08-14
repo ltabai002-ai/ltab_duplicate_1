@@ -282,6 +282,9 @@ p {
   box-shadow: var(--shadow);
   transition: all 0.3s ease;
   border: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
 .card:hover {
@@ -289,6 +292,19 @@ p {
   box-shadow: var(--shadow-lg);
 }
 
+/* Ensure buttons in cards are pushed to bottom */
+.card .btn {
+  margin-top: auto;
+}
+
+/* Ensure content grows to fill available space */
+.card > *:not(.btn) {
+  flex-grow: 0;
+}
+
+.card > p:last-of-type:not(.btn) {
+  margin-bottom: auto;
+}
 /* Grid */
 .grid {
   display: grid;
@@ -779,7 +795,6 @@ p {
   
   .btn {
     width: 100%;
-    max-width: 300px;
   }
   
   /* Mobile responsive for deliverables section */
