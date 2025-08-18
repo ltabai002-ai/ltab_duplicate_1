@@ -58,7 +58,8 @@
                     <h2>📞 Book a Demo</h2>
                     <p>See our AI growth solutions in action with a personalized 15-minute demo.</p>
                     
-                    <form class="form" id="demo-form">
+                    <form class="form" id="demo-form" name="demo" data-netlify="true">
+                        <input type="hidden" name="form-name" value="demo">
                         <div class="form-group">
                             <label for="demo-name" class="form-label">Name *</label>
                             <input type="text" id="demo-name" name="name" class="form-input" required>
@@ -261,47 +262,23 @@
             }
 
             function handleFormSubmission(form, type) {
+                // Prevent default form submission
+                event.preventDefault();
+                
                 // Get form data
                 const formData = new FormData(form);
-                const data = Object.fromEntries(formData.entries());
                 
-                // Get contact details from button
-                const submitButton = form.querySelector('button[type="submit"]');
-                const email = submitButton.getAttribute('data-email');
-                const whatsapp = submitButton.getAttribute('data-whatsapp');
+                // Add form name for Netlify Forms
+                formData.append('form-name', form.name);
                 
-                // Create email body
-                let emailBody = `New Demo Request:\n\n`;
-                emailBody += `Name: ${data.name}\n`;
-                emailBody += `Email: ${data.email}\n`;
-                emailBody += `WhatsApp: ${data.whatsapp}\n`;
-                emailBody += `Company: ${data.company || 'Not provided'}\n`;
-                emailBody += `Website: ${data.website || 'Not provided'}\n`;
-                
-                // Get selected services
-                const services = formData.getAll('services');
-                if (services.length > 0) {
-                    emailBody += `Services: ${services.join(', ')}\n`;
-                }
-                
-                emailBody += `\nConsents:\n`;
-                emailBody += `Email updates: ${data['email-consent'] ? 'Yes' : 'No'}\n`;
-                emailBody += `WhatsApp messages: ${data['whatsapp-consent'] ? 'Yes' : 'No'}\n`;
-                
-                // Create mailto link
-                const subject = encodeURIComponent('New Demo Request from ' + data.name);
-                const body = encodeURIComponent(emailBody);
-                const mailtoLink = `mailto:${email}?subject=${subject}&body=${body}`;
-                
-                // Create WhatsApp message
-                const whatsappMessage = encodeURIComponent(`New demo request from ${data.name} (${data.email}). Please check email for full details.`);
-                const whatsappLink = `https://wa.me/${whatsapp.replace(/[^0-9]/g, '')}?text=${whatsappMessage}`;
-                
-                // Open email client
-                window.open(mailtoLink, '_blank');
-                
-                // Show success modal
-                setTimeout(() => {
+                // Submit to Netlify Forms
+                fetch('/', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                    body: new URLSearchParams(formData).toString()
+                })
+                .then(() => {
+                    // Show success modal and reset form
                     showSuccessModal();
                     form.reset();
                     
@@ -312,7 +289,12 @@
                             'event_category': 'Lead Generation'
                         });
                     }
-                }, 1000);
+                })
+                .catch((error) => {
+                    console.error('Form submission error:', error);
+                    // Show error message to user
+                    alert('There was an error submitting your form. Please try again or contact us directly.');
+                });
             }
 
             function showSuccessModal() {
