@@ -4,6 +4,7 @@ import { resolve } from 'path';
 export default defineConfig({
   build: {
     rollupOptions: {
+      input: {
         main: resolve(__dirname, 'index.html'),
         aiGallery: resolve(__dirname, 'ai-gallery.html'),
         createGraphics: resolve(__dirname, 'create-graphics.html'),
