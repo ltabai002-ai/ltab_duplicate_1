@@ -2,20 +2,13 @@ import React, { useState } from 'react';
 import GalleryTabs from '../components/GalleryTabs';
 import ImageGrid from '../components/ImageGrid';
 import VideoGrid from '../components/VideoGrid';
-import { useNavigate } from 'react-router-dom';
 
 const AiGallery: React.FC = () => {
   const [activeTab, setActiveTab] = useState<'images' | 'videos'>('images');
-  const navigate = useNavigate();
 
   const handleCTAClick = () => {
     console.log('cta_click');
-    // Navigate to create-graphics if route exists
-    try {
-      navigate('/create-graphics');
-    } catch (error) {
-      console.log('Route /create-graphics not found');
-    }
+    window.location.href = '/create-graphics.html';
   };
 
   return (
