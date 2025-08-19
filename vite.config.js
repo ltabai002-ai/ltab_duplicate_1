@@ -17,7 +17,6 @@ export default defineConfig({
         contact: resolve(__dirname, 'contact/index.html'),
         privacy: resolve(__dirname, 'legal/privacy.html'),
         terms: resolve(__dirname, 'legal/terms.html'),
-        dataProcessing: resolve(__dirname, 'legal/data-processing.html'),
       },
     },
   },
