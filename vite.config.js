@@ -6,6 +6,7 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main: resolve(__dirname, 'index.html'),
+        aiGallery: resolve(__dirname, 'ai-gallery.html'),
         services: resolve(__dirname, 'services/index.html'),
         aiVideos: resolve(__dirname, 'services/ai-videos.html'),
         socialAutomation: resolve(__dirname, 'services/social-automation.html'),
