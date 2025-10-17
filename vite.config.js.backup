@@ -13,8 +13,6 @@ export default defineConfig({
         aiVideos: resolve(__dirname, 'services/ai-videos.html'),
         socialAutomation: resolve(__dirname, 'services/social-automation.html'),
         aiWebsites: resolve(__dirname, 'services/ai-websites.html'),
-        aiOps: resolve(__dirname, 'services/ai-ops.html'),
-        caseStudies: resolve(__dirname, 'case-studies/index.html'),
         pricing: resolve(__dirname, 'pricing/index.html'),
         about: resolve(__dirname, 'about/index.html'),
         contact: resolve(__dirname, 'contact/index.html'),
